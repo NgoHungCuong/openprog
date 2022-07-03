@@ -2,8 +2,9 @@ from nhcusb import nhcusb
 import spi
 import time
 import argparse
+import avr
 
-class avr:
+class atmega8(avr.avr):
     id = b'\x1e' + b'\x93' + b'\x07'
     flash_size = 8 * 1024
     flash_page_size = 64
@@ -681,7 +682,7 @@ class avr:
         self.exit_prog()
         self.close_prog()
         print("Done")
-"""
-prog = avr()
+
+prog = atmega8()
 prog.process()
-"""
+
