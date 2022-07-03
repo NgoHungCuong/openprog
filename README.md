@@ -1,2 +1,3 @@
 # openprog
 Open Programmer for Microcontroller: 89S, AVR, Nuvoton, ...
+![Alt text](hardware/Schematic_M252FC2AE.png?raw=true "Schematic")
