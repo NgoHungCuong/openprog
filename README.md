@@ -8,7 +8,7 @@ Based on M252FC2AE from Nuvoton
 4. Open Terminal: firmware.py firmware/openprog.bin
 5. Let go
 ![Alt text](img/atmega8.png?raw=true "Atmega8")
-* SPI connection: 89S, AVR...
+# SPI connection: 89S, AVR...
 PB13: MOSI
 PB14: MISO
 PB12: SCK
