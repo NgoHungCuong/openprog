@@ -1,0 +1,213 @@
+{
+  "uuid": "910f6b2aa6a2435354e06f6ba56fc9ed",
+  "path": "Offline/M252FC2AE",
+  "name": "M252FC2AE",
+  "content": "",
+  "created_at": "2021-04-28 09:38:30",
+  "updated_at": "2022-07-03 14:19:42",
+  "stick": "",
+  "documents": [
+    {
+      "uuid": "e560b852e0b2c755047fdb7fc1815db6",
+      "title": "M252FC2AE_VDK2",
+      "description": "",
+      "docType": "1",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "2ef9d1bb92eb4f8db589fe96d45e036d": 1,
+        "88961bb481e0b4e3b2a4bd146abf2750": 1,
+        "3c9073b489fbac04cdc849b06ebd1adb": 2,
+        "b0248eb51e084227889f2cb84eab79c4": 4,
+        "5cbe824183374fac8e4c1ae848199ce3": 2,
+        "24eeb2ceca08480b92b847b6a310acda": 4,
+        "4a2c584b8bdf2028156b6341ce399fe2": 2,
+        "244bd636e8bda5f98de74151416919bd": 1
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "MF-NSMF050-2",
+          1,
+          "F1206",
+          "F1",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer": "BOURNS",
+            "BOM_Manufacturer Part": "MF-NSMF050-2",
+            "BOM_Supplier Part": "C75464",
+            "BOM_JLCPCB SMD": "Yes",
+            "BOM_LCSC Assembly": "Yes",
+            "puuid": "0ef2ffb5cc654f8ca80173df567cc6fb",
+            "uuid": "2ef9d1bb92eb4f8db589fe96d45e036d"
+          }
+        ],
+        [
+          "Header-Male-2.54_2x10",
+          2,
+          "HDR-TH_20P-P2.54-V-R2-C10-S2.54",
+          "H2,H1",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C62032",
+            "BOM_Manufacturer Part": "",
+            "puuid": "780686d0fdb24daf9219b0adc15f316a",
+            "uuid": "3c9073b489fbac04cdc849b06ebd1adb"
+          }
+        ],
+        [
+          "3x6x2.5mm",
+          2,
+          "KEY-3.0*6.0",
+          "KEY2,KEY1",
+          {
+            "BOM_Supplier Part": "C5382",
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer": "ReliaPro",
+            "BOM_Manufacturer Part": "3x6x2.5mm",
+            "puuid": "fd04c2b37e3f4daf93a176ff1f28dfba",
+            "uuid": "4a2c584b8bdf2028156b6341ce399fe2"
+          }
+        ],
+        [
+          "LED-0603_R",
+          2,
+          "LED0603_RED",
+          "LED2,LED1",
+          {
+            "BOM_Manufacturer": "EVERLIGHT(台湾亿光)",
+            "BOM_Manufacturer Part": "19-217/R6C-AL1M2VY/3T",
+            "BOM_Supplier Part": "C72044",
+            "BOM_Supplier": "LCSC",
+            "puuid": "1efb3a885b5b4aecb6d41221a8f4d86b",
+            "uuid": "5cbe824183374fac8e4c1ae848199ce3"
+          }
+        ],
+        [
+          "1u",
+          2,
+          "C0603",
+          "C4,C1",
+          {
+            "BOM_Supplier Part": "",
+            "BOM_Supplier": "",
+            "BOM_Manufacturer Part": "",
+            "puuid": "f187d3c25f9f43a29b67d3cfa364ee78",
+            "uuid": "24eeb2ceca08480b92b847b6a310acda"
+          }
+        ],
+        [
+          "0.1u",
+          2,
+          "C0603",
+          "C3,C2",
+          {
+            "BOM_Supplier Part": "",
+            "BOM_Supplier": "",
+            "BOM_Manufacturer Part": "",
+            "puuid": "f187d3c25f9f43a29b67d3cfa364ee78",
+            "uuid": "24eeb2ceca08480b92b847b6a310acda"
+          }
+        ],
+        [
+          "M252FC2AE",
+          1,
+          "TSSOP-20_L6.5-W4.4-P0.65-LS6.4-BL",
+          "U1",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer": "NUVOTON",
+            "BOM_Manufacturer Part": "N76E003AT20",
+            "BOM_Supplier Part": "C82751",
+            "BOM_JLCPCB SMD": "Yes",
+            "BOM_LCSC Assembly": "Yes",
+            "puuid": "e19495e3bb384fc08faab9538c2e1dcc",
+            "uuid": "244bd636e8bda5f98de74151416919bd"
+          }
+        ],
+        [
+          "USB-MINI-5P-PEG",
+          1,
+          "MICRO-USB-SMD_MINI5P",
+          "CN1",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer": "ValuePro",
+            "BOM_Manufacturer Part": "USB-MINI-5P-PEG",
+            "BOM_Supplier Part": "C69074",
+            "puuid": "79c800028d434f7499dc3a8385661a62",
+            "uuid": "88961bb481e0b4e3b2a4bd146abf2750"
+          }
+        ],
+        [
+          "10k",
+          2,
+          "R0603",
+          "R3,R4",
+          {
+            "BOM_Supplier Part": "",
+            "BOM_Supplier": "",
+            "BOM_Manufacturer Part": "",
+            "puuid": "1bf59dff03ec4233aa077dc7cf0e92a1",
+            "uuid": "b0248eb51e084227889f2cb84eab79c4"
+          }
+        ],
+        [
+          "1k",
+          2,
+          "R0603",
+          "R1,R2",
+          {
+            "BOM_Supplier Part": "",
+            "BOM_Supplier": "",
+            "BOM_Manufacturer Part": "",
+            "puuid": "1bf59dff03ec4233aa077dc7cf0e92a1",
+            "uuid": "b0248eb51e084227889f2cb84eab79c4"
+          }
+        ]
+      ],
+      "updateTime": 1621214668,
+      "createTime": 1619582427,
+      "histories": [],
+      "created_at": "2021-04-28 11:00:27",
+      "updated_at": "2021-05-17 08:24:28"
+    },
+    {
+      "uuid": "183699abf801f1834555f6a879505b5e",
+      "puuid": "910f6b2aa6a2435354e06f6ba56fc9ed",
+      "title": "M252FC2AE_VDK2_PCB",
+      "filename": "M252FC2AE_VDK2_PCB.json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "79c800028d434f7499dc3a8385661a62": 1,
+        "0ef2ffb5cc654f8ca80173df567cc6fb": 1,
+        "1bf59dff03ec4233aa077dc7cf0e92a1": 4,
+        "f187d3c25f9f43a29b67d3cfa364ee78": 4,
+        "780686d0fdb24daf9219b0adc15f316a": 2,
+        "fd04c2b37e3f4daf93a176ff1f28dfba": 2,
+        "1efb3a885b5b4aecb6d41221a8f4d86b": 2,
+        "e19495e3bb384fc08faab9538c2e1dcc": 1
+      },
+      "BOM": [],
+      "updateTime": 1656832782,
+      "createTime": 1619660600,
+      "histories": [],
+      "created_at": "2021-04-29 08:43:20",
+      "updated_at": "2022-07-03 14:19:42"
+    }
+  ],
+  "sort": [],
+  "title": "M252FC2AE",
+  "foldername": "M252FC2AE",
+  "schfilename": "M252FC2AE.json",
+  "schfilemtime": 1621214668656
+}
