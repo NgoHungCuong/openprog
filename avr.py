@@ -426,7 +426,7 @@ class avr:
         args = parser.parse_args()
 
         print("=======================================================================================")
-        print("NHC Pro by Ngo Hung Cuong")
+        print("openprog by Ngo Hung Cuong")
         print("=======================================================================================")
 
         if self.open_prog() == 0:

@@ -131,7 +131,7 @@ class at89s5x:
         parser.add_argument("--write_lock", help = "Write lock bits (y/n)")
         args = parser.parse_args()
         print("=======================================================================================")
-        print("NHC Pro by Ngo Hung Cuong")
+        print("openprog by Ngo Hung Cuong")
         print("=======================================================================================")
 
         if self.open_prog() == 0:
