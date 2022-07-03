@@ -2,6 +2,7 @@ from nhcusb import nhcusb
 import spi
 import time
 import argparse
+from intelhex import IntelHex
 
 class at89s5x:
     id = b'\x1e' + b'\x51' + b'\x06'
@@ -9,6 +10,20 @@ class at89s5x:
     ver = "NHC_PROG SPI v220601"
 
     nhcspi = spi.spi()
+
+    def is_hex_file(self, filename):
+        name = filename.lower()
+        n = len(name)
+        tmp = name[n - 4: n]
+        if tmp == '.hex':
+            return 1
+        tmp = name[n - 4: n]
+        if tmp == '.eep':
+            return 1
+        tmp = name[n - 5: n]
+        if tmp == '.ihex':
+            return 1
+        return 0
 
     def open_prog(self):
         return self.nhcspi.open()
@@ -188,12 +203,13 @@ class at89s5x:
 
         #write flash
         if args.write_flash != None:
-            print("Write:")
-            f = open(args.write_flash, "rb")
-            writebuff = f.read()
-            f.close()
-            n = len(writebuff)
-            writebuff += b'\xff' * (self.flash_size - n)
+            print("Write flash:")
+            ih = IntelHex()
+            if self.is_hex_file(args.write_flash) == 1:
+                ih.fromfile(args.write_flash, format = 'hex')
+            else:
+                ih.fromfile(args.write_flash, format = 'bin')
+            writebuff = ih.tobinarray(0, self.flash_size - 1)
             page_size = 512
             for i in range(self.flash_size // page_size):
                 res = self.write_flash(writebuff[(i * page_size): (i * page_size + page_size)], i * page_size)
@@ -206,8 +222,8 @@ class at89s5x:
 
         #read flash
         if args.read_flash != None:
-            print("Read:")
-            f = open(args.read_flash, "wb")
+            print("Read flash:")
+            ih = IntelHex()
             page_size = 512
             for i in range(self.flash_size // page_size):
                 (res, tmp) = self.read_flash(i * page_size, page_size)
@@ -215,19 +231,23 @@ class at89s5x:
                     self.exit_prog()
                     self.close_prog()
                     raise("Read flash: FAIL")
-                f.write(tmp)
+                ih.frombytes(tmp, i * page_size)
                 print(".", end='', sep='', flush=True)
-            f.close()
+            if self.is_hex_file(args.read_flash) == 1:
+                ih.write_hex_file(args.read_flash)
+            else:
+                ih.tobinfile(args.read_flash)
             print("\n")
 
         #verify flash
         if args.verify_flash != None:
-            f = open(args.verify_flash, "rb")
-            writebuff = f.read()
-            f.close()
-            n = len(writebuff)
-            writebuff += b'\xff' * (self.flash_size - n)
-            print("Verify:")
+            ih = IntelHex()
+            if self.is_hex_file(args.verify_flash) == 1:
+                ih.fromfile(args.verify_flash, format = 'hex')
+            else:
+                ih.fromfile(args.verify_flash, format = 'bin')
+            writebuff = ih.tobinarray(0, self.flash_size - 1)
+            print("Verify flash:")
             page_size = 512
             for i in range(self.flash_size // page_size):
                 (res, tmp) = self.read_flash(i * page_size, page_size)

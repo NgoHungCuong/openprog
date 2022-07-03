@@ -2,6 +2,7 @@ from nhcusb import nhcusb
 import spi
 import time
 import argparse
+from intelhex import IntelHex
 
 class avr:
     id = b'\x1e' + b'\x93' + b'\x07'
@@ -17,6 +18,20 @@ class avr:
     ver = "NHC_PROG SPI v220601"
 
     nhcspi = spi.spi()
+
+    def is_hex_file(self, filename):
+        name = filename.lower()
+        n = len(name)
+        tmp = name[n - 4: n]
+        if tmp == '.hex':
+            return 1
+        tmp = name[n - 4: n]
+        if tmp == '.eep':
+            return 1
+        tmp = name[n - 5: n]
+        if tmp == '.ihex':
+            return 1
+        return 0
 
     def hex_parse(self, input):
         return int(input, 0)
@@ -483,12 +498,13 @@ class avr:
 
         #write flash
         if args.write_flash != None:
-            print("Write:")
-            f = open(args.write_flash, "rb")
-            writebuff = f.read()
-            f.close()
-            n = len(writebuff)
-            writebuff += b'\xff' * (self.flash_size - n)
+            print("Write flash:")
+            ih = IntelHex()
+            if self.is_hex_file(args.write_flash) == 1:
+                ih.fromfile(args.write_flash, format='hex')
+            else:
+                ih.fromfile(args.write_flash, format='bin')
+            writebuff = ih.tobinarray(0, self.flash_size - 1)
             page_size = self.flash_page_size
             for i in range(self.flash_size // page_size):
                 res = self.write_flash(writebuff[(i * page_size): (i * page_size + page_size)], i * page_size)
@@ -501,8 +517,8 @@ class avr:
 
         #read flash
         if args.read_flash != None:
-            print("Read:")
-            f = open(args.read_flash, "wb")
+            print("Read flash:")
+            ih = IntelHex()
             page_size = 512
             for i in range(self.flash_size // page_size):
                 (res, tmp) = self.read_flash(i * page_size, page_size)
@@ -510,19 +526,23 @@ class avr:
                     self.exit_prog()
                     self.close_prog()
                     raise("Read flash: FAIL")
-                f.write(tmp)
+                ih.frombytes(tmp, i * page_size)
                 print(".", end='', sep='', flush=True)
-            f.close()
+            if self.is_hex_file(args.read_flash) == 1:
+                ih.write_hex_file(args.read_flash)
+            else:
+                ih.tobinfile(args.read_flash)
             print("\n")
 
         #verify flash
         if args.verify_flash != None:
-            f = open(args.verify_flash, "rb")
-            writebuff = f.read()
-            f.close()
-            n = len(writebuff)
-            writebuff += b'\xff' * (self.flash_size - n)
-            print("Verify:")
+            ih = IntelHex()
+            if self.is_hex_file(args.verify_flash) == 1:
+                ih.fromfile(args.verify_flash, format='hex')
+            else:
+                ih.fromfile(args.verify_flash, format='bin')
+            writebuff = ih.tobinarray(0, self.flash_size - 1)
+            print("Verify flash:")
             page_size = 512
             for i in range(self.flash_size // page_size):
                 (res, tmp) = self.read_flash(i * page_size, page_size)
@@ -541,11 +561,12 @@ class avr:
         #write eeprom
         if args.write_eeprom != None:
             print("Write EEPROM:")
-            f = open(args.write_eeprom, "rb")
-            writebuff = f.read()
-            f.close()
-            n = len(writebuff)
-            writebuff += b'\xff' * (self.eeprom_size - n)
+            ih = IntelHex()
+            if self.is_hex_file(args.write_eeprom) == 1:
+                ih.fromfile(args.write_eeprom, format='hex')
+            else:
+                ih.fromfile(args.write_eeprom, format='bin')
+            writebuff = ih.tobinarray(0, self.eeprom_size - 1)
             page_size = self.eeprom_page_size
             for i in range(self.eeprom_size // page_size):
                 res = self.write_eeprom(writebuff[i], i)
@@ -559,7 +580,7 @@ class avr:
         #read eeprom
         if args.read_eeprom != None:
             print("Read EEPROM:")
-            f = open(args.read_eeprom, "wb")
+            ih = IntelHex()
             if self.eeprom_size > 512:
                 page_size = 512
             else:
@@ -571,20 +592,23 @@ class avr:
                     self.exit_prog()
                     self.close_prog()
                     raise("Read EEPROM: FAIL")
-                f.write(tmp)
+                ih.frombytes(tmp, i * page_size)
                 print(".", end='', sep='', flush=True)
-            f.close()
+            if self.is_hex_file(args.read_eeprom) == 1:
+                ih.write_hex_file(args.read_eeprom)
+            else:
+                ih.tobinfile(args.read_eeprom)
             print("\n")
 
         #verify eeprom
         if args.verify_eeprom != None:
             print("Verify EEPROM:")
-            f = open(args.verify_eeprom, "rb")
-            writebuff = f.read()
-            f.close()
-            n = len(writebuff)
-            writebuff += b'\xff' * (self.eeprom_size - n)
-            
+            ih = IntelHex()
+            if self.is_hex_file(args.verify_eeprom) == 1:
+                ih.fromfile(args.verify_eeprom, format='hex')
+            else:
+                ih.fromfile(args.verify_eeprom, format='bin')
+            writebuff = ih.tobinarray(0, self.eeprom_size - 1)
             if self.eeprom_size > 512:
                 page_size = 512
             else:
