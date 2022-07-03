@@ -9,7 +9,7 @@ Based on M252FC2AE from Nuvoton
 5. Let go
 ![Atmega8](img/atmega8.png?raw=true "Atmega8")
 # SPI connection: 89S, AVR...
-PB13: MOSI
-PB14: MISO
-PB12: SCK
-PF2: RESET
+1. PB13: MOSI
+2. PB14: MISO
+3. PB12: SCK
+4. PF2: RESET
