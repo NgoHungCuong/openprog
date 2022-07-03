@@ -16,5 +16,5 @@ Based on M252FC2AE from Nuvoton
 # Donate
 If this project help you reduce time to develop, you can give me a cup of coffee :)
 1. Paypal: vidieukhien.org@gmail.com
-2. Crypto: 0x2Ca08BF678296E074BbcD75abe30f11F72B1d69e (BEP-20)
+2. Cryptocurrency: 0x2Ca08BF678296E074BbcD75abe30f11F72B1d69e (BEP-20)
 ![BEP20](img/BEP20.jpg?raw=true "BEP20")
