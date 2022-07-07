@@ -13,6 +13,9 @@ Based on M252FC2AE from Nuvoton
 2. PB14: MISO
 3. PB12: SCK
 4. PF2: RESET
+# RL78 connection: R5F11W68...
+1. PB12 + PB13: TOOL0
+2. PF2: RESET
 # Donate
 If this project help you reduce time to develop, you can give me a cup of coffee :)
 1. Paypal: vidieukhien.org@gmail.com
