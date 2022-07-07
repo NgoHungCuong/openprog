@@ -18,7 +18,7 @@ class rl78g10:
     ERASE_WRITE = 0x33
     ERASE_WRITE_LAST = 0x34
     READ_CRC16 = 0x35
-    ver = "RL78G10 v220707"
+    ver = "RL78G10 v220708"
 
     usb = nhcusb.nhcusb()
 
@@ -52,7 +52,9 @@ class rl78g10:
         if self.usb.write(tmp) == 0:
             return 0
         (res, tmp) = self.usb.read()
-        return res
+        if res == 0:
+            return 0
+        return tmp[0]
 
     def exit(self):
         tmp = bytearray(64)
