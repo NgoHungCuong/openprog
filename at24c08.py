@@ -8,13 +8,11 @@ import argparse
 from intelhex import IntelHex
 import at24c
 
-class at24c64(at24c.at24c):
+class at24c08(at24c.at24c):
 
-    eeprom_size = 64 * 1024 // 8
-    eeprom_page_size = 32
-    address_size = 2
+    eeprom_size = 8 * 1024 // 8
+    eeprom_page_size = 4
+    address_size = 1
 
-
-nhci2c = at24c64()
+nhci2c = at24c08()
 nhci2c.process()
-

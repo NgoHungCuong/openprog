@@ -6,9 +6,9 @@ import struct
 import time
 import argparse
 from intelhex import IntelHex
-import i2c
+import at24c
 
-class at24c256(i2c.i2c):
+class at24c256(at24c.at24c):
 
     eeprom_size = 256 * 1024 // 8
     eeprom_page_size = 64
